@@ -1,0 +1,49 @@
+{
+  "rules": [
+    {
+      "rule_id": "SAFE_HELMET_VISIBLE_001",
+      "description": "Helmet evidence is visible for the worker/head region.",
+      "recommended_action": "No action required."
+    },
+    {
+      "rule_id": "PPE_ACTIVE_ZONE_001",
+      "description": "Worker/head region is missing helmet evidence in an active work area.",
+      "recommended_action": "Supervisor should verify helmet compliance in active work area."
+    },
+    {
+      "rule_id": "PPE_RESTRICTED_ZONE_001",
+      "description": "Worker/head region is missing helmet evidence inside a restricted zone.",
+      "recommended_action": "Trigger critical alert and verify restricted-zone access immediately."
+    },
+    {
+      "rule_id": "PPE_HEIGHT_ZONE_001",
+      "description": "Worker/head region is missing helmet evidence in a work-at-height zone.",
+      "recommended_action": "Trigger critical alert and verify work-at-height PPE immediately."
+    },
+    {
+      "rule_id": "PPE_OFFICE_EXCEPTION_001",
+      "description": "No-helmet cue occurs in an exempt zone.",
+      "recommended_action": "No alert; worker/head region is outside an active PPE-controlled work zone."
+    },
+    {
+      "rule_id": "PPE_UNCERTAIN_REVIEW_001",
+      "description": "Helmet evidence is uncertain in a PPE-controlled zone.",
+      "recommended_action": "Escalate to human review before sending an alert."
+    },
+    {
+      "rule_id": "PPE_UNCERTAIN_LOW_RISK_001",
+      "description": "Helmet evidence is uncertain in an exempt or low-risk zone.",
+      "recommended_action": "Retain for review without sending a safety alert."
+    },
+    {
+      "rule_id": "PPE_UNKNOWN_ZONE_001",
+      "description": "No-helmet cue has no reliable zone grounding.",
+      "recommended_action": "Escalate to human review because zone grounding is unavailable."
+    },
+    {
+      "rule_id": "NO_MATCH_001",
+      "description": "No configured helmet-zone rule applies to the normalized evidence.",
+      "recommended_action": "No action; retain the no-match reason for audit."
+    }
+  ]
+}
