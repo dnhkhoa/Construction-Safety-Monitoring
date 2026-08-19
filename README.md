@@ -126,14 +126,37 @@ bash scripts/evaluate.sh results/train/weights/best.pt
 python -m src.inference.predict --config configs/baseline.yaml --weights results/train/weights/best.pt --source path/to/image_or_directory
 ```
 
+## Scoped Safety Agents
+
+The repository also carries a small, isolated reasoning package under
+`src/safety_agents/`:
+
+- `ContextAgent` validates model proposals against typed references and bounded
+  actions. Its default adapter is intentionally unconfigured and returns
+  `ABSTAIN` rather than inventing evidence.
+- `RuleSeverityAgent` accepts only a gate result with the
+  `READY_FOR_RULE` route and maps normalized helmet/zone evidence to the checked-in
+  rule catalog.
+- `EvidenceSufficiencyGate` and the shared typed contracts are included only as
+  the minimum control boundary required by those two agents.
+
+This port does not add PPE, Zone, Orchestrator, Reporting, or other MoA agents,
+and it does not connect the agents to the baseline pipeline automatically. See
+`context.md` for the project-wide ownership and fail-closed constraints.
+
+Run the scoped contract tests with:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
 ## Future Extensions
 
 Future research stages may add:
 
 - Full PPE detection
-- Context analysis
 - Behavior analysis
-- Multi-agent / Mixture-of-Agents (MoA) reasoning
+- Integration of the scoped agents into a controlled end-to-end flow
 - Automatic safety reporting
 
-These modules are intentionally not implemented in the current baseline setup.
+These extensions are intentionally not implemented in the current baseline setup.
